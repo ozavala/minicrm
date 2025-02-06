@@ -18,8 +18,12 @@
                     @role(\App\RoleEnum::ADMIN)
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                         {{ __('Users') }}
-                    @endrole
                     </x-nav-link>
+                    @endrole('admin')
+                    <x-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')">
+                        {{ __('Clients') }}
+                    </x-nav-link>
+                    
                 </div>
             </div>
 
@@ -80,6 +84,9 @@
                 {{ __('Users') }}
             </x-responsive-nav-link>
             @endrole('admin')
+            <x-responsive-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')">
+                {{ __('Clients') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

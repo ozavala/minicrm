@@ -11,9 +11,10 @@
                 <x-guest-layout>
                     
                     <form method="POST" action="{{ route('users.update', $user) }}">
+                        
                         @method('PUT')
+                        
                         @csrf
-                
                         <!-- First Name -->
                         <div class="mt-4">
                             <x-input-label for="first_name" :value="__('First Name')" />
@@ -34,10 +35,8 @@
                             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $user->email)" required autocomplete="username" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
-                
-                        
-                
-                            <x-primary-button class="ms-4">
+
+                        <x-primary-button class="ms-4">
                                 {{ __('Save') }}
                             </x-primary-button>
                         </div>
