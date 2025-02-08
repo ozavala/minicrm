@@ -4,6 +4,12 @@ namespace Database\Seeders;
 
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\TaskSeeder;
+use Database\Seeders\UserSeeder;
+use Database\Seeders\RoleSeeder;
+use Database\Seeders\ClientSeeder;
+use Database\Seeders\ProjectSeeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,7 +22,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             ClientSeeder::class,
-            ProjectSeeder::class
+            ProjectSeeder::class,
+            TaskSeeder::class,
         ]);
     }
 }

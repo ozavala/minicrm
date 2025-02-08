@@ -17,7 +17,7 @@
                         <div class="mt-4">
                             <x-input-label for="contact_name" :value="__('Contact Name')" />
                             <x-text-input id="contact_name" class="block mt-1 w-full" type="text" name="contact_name" :value="old('contact_name')" required  autofocus autocomplete="contact_name" />
-                            <x-input-error :messages="$errors->get('contactt_name')" class="mt-2" />
+                            <x-input-error :messages="$errors->get('contact_name')" class="mt-2" />
                         </div>
                 
                         <!-- Contat Email -->
