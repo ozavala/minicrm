@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Project') }}
+            {{ __('Edit Task') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="overflow-hidden overflow-x-auto p-6 bg-white border-b border-gray-200">
 
-                    <form method="POST" action="{{ route('projects.update', $project) }}">
+                    <form method="POST" action="{{ route('tasks.update', $task) }}">
                         @csrf
                         @method('PUT')
 
@@ -57,7 +57,7 @@
 
                         <!-- Assigned Client -->
                         <div class="mt-4">
-                            <x-input-label for="client_id" :value="__('Client')"/>
+                            <x-input-label for="client_id" :value="__('Assigned client')"/>
                             <select
                                     class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                                     name="client_id" id="client_id">
@@ -71,7 +71,7 @@
 
                         <!-- Assigned Project -->
                         <div class="mt-4">
-                            <x-input-label for="project_id" :value="__('Assigned Project')"/>
+                            <x-input-label for="project_id" :value="__('Assigned project')"/>
                             <select
                                     class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                                     name="project_id" id="project_id">
@@ -90,8 +90,8 @@
                                     class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                                     name="status" id="status">
                                 @foreach(\App\Enums\TaskStatus::cases() as $status)
-                                    <option
-                                            value="{{ $status->value }}" @selected(old('status', $task->status->value) == $status->value)>{{ $status->value }}</option>
+                                    <option value="{{ $status->value }}"
+                                            @selected(old('status', $task->status->value) == $status->value)>{{ $status->value }}</option>
                                 @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('status')" class="mt-2"/>

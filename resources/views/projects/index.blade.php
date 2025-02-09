@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <a href="{{ route('projects.create') }}" class="underline text-indigo-600 hover:text-indigo-900">Add new project</a>
+                    <a href="{{ route('projects.create') }}" class="underline">Add new project</a>
 
                     <table class="min-w-full divide-y divide-gray-200 border mt-4">
                         <thead>
@@ -53,17 +53,19 @@
                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                     {{ $project->status }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                       
-                                    <!-- Edit and delete buttons... -->
-                                    <a href="{{ route('projects.edit', $project->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                   <form method="POST" class= "inline" 
-                                        action="{{ route('clients.destroy', $project->id) }}" 
-                                        onsubmit="return confirm('Are you sure?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
-                                    </form>
+                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                                    <a href="{{ route('projects.edit', $project) }}" class="underline">Edit</a>
+                                    @can(\App\Enums\PermissionEnum::DELETE_PROJECTS->value)
+                                        |
+                                        <form action="{{ route('projects.destroy', $project) }}"
+                                              method="POST"
+                                              onsubmit="return confirm('Are you sure?');"
+                                              class="inline-block">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="text-red-500 underline">Delete</button>
+                                        </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

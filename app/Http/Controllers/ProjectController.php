@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Client;
 use App\Models\Project;
+use App\Enums\PermissionEnum;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 
@@ -76,6 +78,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        Gate::authorize(PermissionEnum::DELETE_PROJECTS->value);
         $project->delete();
         return redirect()->route('projects.index')->with('success','Project deleted successfully');
     }

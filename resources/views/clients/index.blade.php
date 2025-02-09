@@ -40,13 +40,15 @@
                                        
                                         <!-- Edit and delete buttons... -->
                                         <a href="{{ route('clients.edit', $client->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                       <form method="POST" class= "inline" 
-                                            action="{{ route('clients.destroy', $client->id) }}" 
-                                            onsubmit="return confirm('Are you sure?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
-                                        </form>
+                                        @can(\App\Enums\PermissionEnum::DELETE_CLIENTS->value)   
+                                            <form method="POST" class= "inline" 
+                                                action="{{ route('clients.destroy', $client->id) }}" 
+                                                onsubmit="return confirm('Are you sure?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
+                                            </form>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
