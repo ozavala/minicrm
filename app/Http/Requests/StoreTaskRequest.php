@@ -30,7 +30,7 @@ class StoreTaskRequest extends FormRequest
             'client_id'     => ['required', Rule::exists('clients', 'id')],
             'project_id'    => ['required', Rule::exists('projects', 'id')],
             'deadline_at'   => ['required', 'date', 'after:yesterday'],
-            'status'        => ['required', Rule::enum(TaskStatus::class)], //in:open,in_progress,completed',
+            'status'        => ['required', Rule::enum(TaskStatus::class)],
         ];
     }
 }

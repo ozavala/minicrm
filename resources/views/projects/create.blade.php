@@ -46,7 +46,7 @@
                                     name="user_id" id="user_id">
                                 @foreach($users as $user)
                                     <option value="{{ $user->id }}"
-                                            @selected(old('user_id') == $user->id)>{{ $user->first_name . ' ' . $user->last_name }}</option>
+                                        @selected(old('user_id') == $user->id)>{{ $user->first_name . ' ' . $user->last_name }}</option>
                                 @endforeach
                             </select>
                             <x-input-error :messages="$errors->get('user_id')" class="mt-2"/>

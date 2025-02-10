@@ -33,7 +33,8 @@ class TaskController extends Controller
         $users= User::select(['first_name', 'last_name'])->get();
         $clients = Client::select(['id','company_name'])->get();
         $projects = Project::select(['id', 'title'])->get();
-        return view('projects.create', compact('users','clients', 'projects'));
+        //dd($users, $clients, $projects);
+        return view('tasks.create', compact('users','clients', 'projects'));
     }
 
     /**
@@ -41,6 +42,7 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
+        dd($request->validated());
         Task::create($request->validated());
         return redirect()->route('tasks.index')->with('success','Task created successfully');
     }
@@ -78,7 +80,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        Gate::authorize(PermissionEnum::DELETE_TASKS->value);
+        Gate::authorize(PermissionEnum::DELETE_TASKS);
         $task->delete();
         return redirect()->route('tasks.index')->with('success','Task deleted successfully');
     }

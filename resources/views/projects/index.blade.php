@@ -55,7 +55,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                     <a href="{{ route('projects.edit', $project) }}" class="underline">Edit</a>
-                                    @can(\App\Enums\PermissionEnum::DELETE_PROJECTS->value)
+                                    @can(\App\Enums\PermissionEnum::DELETE_PROJECTS)
                                         |
                                         <form action="{{ route('projects.destroy', $project) }}"
                                               method="POST"

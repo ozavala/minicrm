@@ -3,5 +3,5 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
-use App\Enums\RoleEnum;
+use App\RoleEnum;
 
